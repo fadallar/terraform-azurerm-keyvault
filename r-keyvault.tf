@@ -33,6 +33,7 @@ resource "azurerm_key_vault" "keyvault" {
 
   tags = merge(local.default_tags, var.extra_tags)
 }
+
 resource "azurerm_private_endpoint" "keyvaultpep" {
   name                = format("pe-%s", local.keyvault_name)
   location            = var.location
