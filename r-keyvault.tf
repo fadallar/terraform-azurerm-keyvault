@@ -50,3 +50,4 @@ resource "azurerm_private_endpoint" "keyvaultpep" {
     private_connection_resource_id = azurerm_key_vault.keyvault.id
     subresource_names              = ["vault"]
   }
+}
