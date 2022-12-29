@@ -102,5 +102,15 @@ variable "soft_delete_retention_days" {
 variable "rbac_authorization_enabled" {
   type        = bool
   description = "Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies."
-  default     = false
+  default     = true
+}
+
+variable "private_dns_zone_ids" {
+  description = "Id of the private DNS Zone  to be used by the Vault private endpoint"
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "Id for the subnet used by the vault private endpoint"
+  type        = string
 }
