@@ -5,7 +5,7 @@ output "key_vault_id" {
 
 output "key_vault_name" {
   description = "Name of the Key Vault"
-  value       = azurerm_key_vault.keyvault.keyvault_name
+  value       = azurerm_key_vault.keyvault.name
 }
 
 output "key_vault_uri" {
