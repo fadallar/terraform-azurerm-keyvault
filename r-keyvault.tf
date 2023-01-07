@@ -31,7 +31,9 @@ resource "azurerm_key_vault" "keyvault" {
     }
   }
 
-  tags = merge(local.default_tags, var.extra_tags)
+  #tags = merge(local.default_tags, var.extra_tags)
+  tags = merge(var.default_tags, var.extra_tags)
+
 }
 
 resource "azurerm_private_endpoint" "keyvaultpep" {
@@ -39,7 +41,8 @@ resource "azurerm_private_endpoint" "keyvaultpep" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id
-  tags = merge(local.default_tags, var.extra_tags)
+  #tags = merge(local.default_tags, var.extra_tags)
+  tags = merge(var.default_tags, var.extra_tags)
   private_dns_zone_group {
     name                 = "keyvault-group"
     private_dns_zone_ids = [var.private_dns_zone_ids]
