@@ -1,5 +1,5 @@
 resource "azurerm_private_endpoint" "keyvaultpep" {
-  name                = format("pe-%s", local.keyvault_name)
+  name                = format("pe-%s", local.name)
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id
