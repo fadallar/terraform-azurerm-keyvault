@@ -1,7 +1,3 @@
-variable "client_name" {
-  description = "Client name"
-  type        = string
-}
 
 variable "environment" {
   description = "Environment name"
@@ -74,6 +70,12 @@ variable "public_network_access_enabled" {
   description = "Whether the Key Vault is available from public network."
   type        = bool
   default     = false
+}
+
+variable "enable_private_endpoint" {
+  description = "Static Site Private DNS Zone id. Required if private endpoint is enabled"
+  type        = bool
+  default     = true
 }
 
 variable "network_acls" {
