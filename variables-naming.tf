@@ -1,7 +1,7 @@
 # Generic naming variables
 
 variable "custom_name" {
-  description = "Custom Azure Static Site name, it will overide the generate name if set"
+  description = "Custom Azure Key Vault Name, it will overide the generate name if set"
   type        = string
   default     = ""
 }
@@ -13,6 +13,6 @@ variable "workload_info" {
 }
 
 variable "landing_zone_slug" {
-  description = "Landing zone acronym,it will used to generate the resource nae"
+  description = "Landing zone acronym,it will beused to generate the resource nae"
   type        = string
 }

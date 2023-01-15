@@ -1,6 +1,6 @@
 module "diagnostics" {
   source  = "app.terraform.io/fabbuildingblocks/diagnostics-settings/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   resource_id = azurerm_key_vault.keyvault.id
 

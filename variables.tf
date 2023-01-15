@@ -73,7 +73,7 @@ variable "public_network_access_enabled" {
 }
 
 variable "enable_private_endpoint" {
-  description = "Static Site Private DNS Zone id. Required if private endpoint is enabled"
+  description = "Private DNS Zone id. Required if private endpoint is enabled"
   type        = bool
   default     = true
 }
