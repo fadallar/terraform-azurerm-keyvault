@@ -1,4 +1,9 @@
 # Diag settings / logs parameters
+variable "diag_log_analytics_workspace_id" {
+  type = string
+  descrption = " Log Analytics Workspace Id for logs and metrics diagnostics destination"
+}
+
 variable "logs_destinations_ids" {
   type        = list(string)
   description = <<EOD
