@@ -1,6 +1,6 @@
 locals {
  
-  service_slug           = "stapp"
+  service_slug           = "kv"
   landing_zone_slug      = var.landing_zone_slug
   application_id         = var.stack
   workload_info          = var.workload_info
