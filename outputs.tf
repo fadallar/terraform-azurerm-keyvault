@@ -13,3 +13,6 @@ output "key_vault_uri" {
   value       = azurerm_key_vault.keyvault.vault_uri
 }
 
+output "key_vault_log_categories" {
+  value = data.azurerm_monitor_diagnostic_categories.diagcategories.log_category_types
+}
