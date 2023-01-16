@@ -73,7 +73,7 @@ variable "public_network_access_enabled" {
 }
 
 variable "enable_private_endpoint" {
-  description = "Private DNS Zone id. Required if private endpoint is enabled"
+  description = "Wheter private endpoint is enabled or not"
   type        = bool
   default     = true
 }
