@@ -1,3 +1,4 @@
+// Need to reviw this
 resource "azurerm_key_vault_access_policy" "readers_policy" {
   for_each = toset(var.rbac_authorization_enabled ? [] : var.reader_objects_ids)
 
