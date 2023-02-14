@@ -23,7 +23,7 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
   dynamic "log" {
     for_each = data.azurerm_monitor_diagnostic_categories.diagcategories.log_category_types
     content {
-      category = log.key
+      category = log.value
       enabled  = true
       retention_policy {
         days    = 30
