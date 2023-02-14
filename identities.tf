@@ -9,7 +9,7 @@ resource "azurerm_user_assigned_identity" "keyvault_secrets_user" {
 resource "azurerm_role_assignment" "rbac_keyvault_secrets_users" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Secrets User"
-  principal_id         = azurerm_user_assigned_identity.keyvault_secrets_user.id
+  principal_id         = azurerm_user_assigned_identity.keyvault_secrets_user.principal_id
 }
 
 // Key Vault Crypto User
@@ -24,7 +24,7 @@ resource "azurerm_user_assigned_identity" "keyvault_crypto_user" {
 resource "azurerm_role_assignment" "rbac_keyvault_crypto_users" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Crypto User"
-  principal_id         = azurerm_user_assigned_identity.keyvault_crypto_user.id
+  principal_id         = azurerm_user_assigned_identity.keyvault_crypto_user.principal_id
 }
 
 // Key Vault Administrator
@@ -39,5 +39,5 @@ resource "azurerm_user_assigned_identity" "keyvault_administrator" {
 resource "azurerm_role_assignment" "rbac_keyvault_administrator" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Administrator"
-  principal_id         = azurerm_user_assigned_identity.keyvault_administrator.id
+  principal_id         = azurerm_user_assigned_identity.keyvault_administrator.principal_id
 }
