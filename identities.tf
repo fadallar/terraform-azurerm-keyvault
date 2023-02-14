@@ -1,23 +1,43 @@
-resource "azurerm_role_assignment" "rbac_keyvault_administrator" {
-  for_each = toset(var.rbac_authorization_enabled ? var.admin_objects_ids : [])
-
-  scope                = azurerm_key_vault.keyvault.id
-  role_definition_name = "Key Vault Administrator"
-  principal_id         = each.value
+// Key Vault Secrets User
+resource "azurerm_user_assigned_identity" "keyvault_secrets_user" {
+  location            = var.location
+  name                = format("id-secrets-user-%s", azurerm_key_vault.keyvault.name)
+  resource_group_name = var.resource_group_name
+  tags                = var.default_tags
 }
 
 resource "azurerm_role_assignment" "rbac_keyvault_secrets_users" {
-  for_each = toset(var.rbac_authorization_enabled ? var.reader_objects_ids : [])
-
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Secrets User"
-  principal_id         = each.value
+  principal_id         = azurerm_user_assigned_identity.keyvault_secrets_user.id
 }
 
-resource "azurerm_role_assignment" "rbac_keyvault_reader" {
-  for_each = toset(var.rbac_authorization_enabled ? var.reader_objects_ids : [])
+// Key Vault Crypto User
 
+resource "azurerm_user_assigned_identity" "keyvault_crypto_user" {
+  location            = var.location
+  name                = format("id-crypto-users-%s", azurerm_key_vault.keyvault.name)
+  resource_group_name = var.resource_group_name
+  tags                = var.default_tags
+}
+
+resource "azurerm_role_assignment" "rbac_keyvault_crypto_users" {
   scope                = azurerm_key_vault.keyvault.id
-  role_definition_name = "Key Vault Reader"
-  principal_id         = each.value
+  role_definition_name = "Key Vault Crypto User"
+  principal_id         = azurerm_user_assigned_identity.keyvault_crypto_user.id
+}
+
+// Key Vault Administrator
+
+resource "azurerm_user_assigned_identity" "keyvault_administrator" {
+  location            = var.location
+  name                = format("id-administrator-%s", azurerm_key_vault.keyvault.name)
+  resource_group_name = var.resource_group_name
+  tags                = var.default_tags
+}
+
+resource "azurerm_role_assignment" "rbac_keyvault_administrator" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = azurerm_user_assigned_identity.keyvault_administrator.id
 }
