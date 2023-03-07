@@ -3,7 +3,7 @@ resource "azurerm_private_endpoint" "keyvaultpep" {
   name                = format("pe-%s", local.name)
   location            = var.location
   resource_group_name = var.resource_group_name
-  subnet_id           = var.subnet_id
+  subnet_id           = var.private_subnet_id
   tags                = merge(var.default_tags, var.extra_tags)
 
   private_dns_zone_group {

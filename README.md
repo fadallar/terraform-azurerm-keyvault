@@ -1,10 +1,20 @@
 # Azure Key Vault
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/
 
-This Terraform module creates an [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/)
-with "reader" and "admin" pre-configured [Access policies](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)
-and [Diagnostic settings](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-logging)
-enabled.
+This Terraform module creates an Azure Key Vault.
+  - It generates an AKS resource name following our naming convention
+  - It applies a default diagnostics settings  
+  - It configures a private endpoint if private access is enabled
+  - it configures KeyVault Firewall policy if ip acl and pr virtual subnet ids are defined
+  - It configures Key Vault firewall if public network access is enabled
+  - It configures user managed identities scoped at the Key Vault for Secrets and Key       Management and Key Vault data plane admin
+
+The module also supports Key Vault Access Policy (altough this is not the preferred choice)
+
+>You can overide the generated name using the custom_name parameter
+
+> Important  
+> Ensures you have the required permissions to associate a role to a user managed identity  
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

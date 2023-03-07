@@ -49,8 +49,8 @@ module "keyvault" {
   network_acls                    = { bypass = "AzureServices" }
   ### References
   diag_log_analytics_workspace_id = ""    #### Log Analytics Workspace Resource Id
-  private_dns_zone_ids = "" ### Key Vault Private DSN zone resource id
-  subnet_id  = ""  ### Private endpoint subnet resource id
+  private_dns_zone_ids = "" ### Key Vault Private DNS zone resource id
+  private_subnet_id  = ""  ### Private endpoint subnet resource id
   
 }
 ```

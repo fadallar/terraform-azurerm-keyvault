@@ -3,21 +3,29 @@ variable "private_dns_zone_ids" {
   type        = string
 }
 
-variable "subnet_id" {
+variable "private_subnet_id" {
   description = "Id for the subnet used by the vault private endpoint"
   type        = string
 }
 
-variable "network_acls" {
-  description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. Set to `null` to disable. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more information."
-  type = object({
-    bypass                     = optional(string, "None"),
-    default_action             = optional(string, "Deny"),
-    ip_rules                   = optional(list(string)),
-    virtual_network_subnet_ids = optional(list(string)),
-  })
-  default = {}
+variable "network_rules_trusted" {
+  description = "Specifies which traffic can bypass the network rules. Possible values are AzureServices and None"
+  type        = string
+  default     = "AzureServices"
 }
+
+variable "allowed_subnets" {
+  description = "List of VNet/Subnet IDs to allow on the registry."
+  default     = []
+  type        = list(string)
+}
+
+variable "allowed_cidrs" {
+  description = "List of CIDRs to allow on the registry"
+  default     = []
+  type        = list(string)
+}
+
 
 variable "public_network_access_enabled" {
   description = "Whether the Key Vault is available from public network."

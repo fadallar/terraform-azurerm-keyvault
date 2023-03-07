@@ -20,14 +20,13 @@ resource "azurerm_key_vault" "keyvault" {
   public_network_access_enabled = var.public_network_access_enabled
 
   dynamic "network_acls" {
-    for_each = var.network_acls == null ? [] : [var.network_acls]
-    iterator = acl
+    for_each = var.virtual_network_subnet_ids != null || var.ip_rules != null || var.network_rules_trusted != "None" ? ["Enabled"] : []
 
     content {
-      bypass                     = acl.value.bypass
-      default_action             = acl.value.default_action
-      ip_rules                   = acl.value.ip_rules
-      virtual_network_subnet_ids = acl.value.virtual_network_subnet_ids
+      bypass                     = var.network_rules_trusted
+      default_action             = "Deny"
+      ip_rules                   = var.allowed_cidrs
+      virtual_network_subnet_ids = var.allowed_subnets
     }
   }
 
