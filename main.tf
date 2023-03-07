@@ -20,7 +20,7 @@ resource "azurerm_key_vault" "keyvault" {
   public_network_access_enabled = var.public_network_access_enabled
 
   dynamic "network_acls" {
-    for_each = var.virtual_network_subnet_ids != null || var.ip_rules != null || var.network_rules_trusted != "None" ? ["Enabled"] : []
+    for_each = var.allowed_cidrs != null || var.allowed_subnets != null || var.network_rules_trusted != "None" ? ["Enabled"] : []
 
     content {
       bypass                     = var.network_rules_trusted
