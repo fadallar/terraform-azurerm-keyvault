@@ -2,7 +2,7 @@
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/
 
 This Terraform module creates an Azure Key Vault.
-  - It generates an AKS resource name following our naming convention
+  - It generates an Key Vault resource name following our naming convention
   - It applies a default diagnostics settings  
   - It configures a private endpoint if private access is enabled
   - it configures KeyVault Firewall policy if ip acl and pr virtual subnet ids are defined
