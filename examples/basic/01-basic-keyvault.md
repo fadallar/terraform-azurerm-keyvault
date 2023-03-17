@@ -46,7 +46,7 @@ module "keyvault" {
   location_short                  = module.regions_master.location_short
   resource_group_name             = module.rg.resource_group_name
   default_tags                    = module.base-tagging.base_tags
-  network_acls                    = { bypass = "AzureServices" }
+  network_rules_trusted = "AzureServices"
   ### References
   diag_log_analytics_workspace_id = ""    #### Log Analytics Workspace Resource Id
   private_dns_zone_ids = "" ### Key Vault Private DNS zone resource id
